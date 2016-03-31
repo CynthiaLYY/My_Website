@@ -1,7 +1,36 @@
-doctype
-html
-	head
-		meta(charset="utf-8")
-		title #{title}
-	body
-		h1 #{title}
+extends ../layout
+block content
+	.container
+		.row
+			form.form-horizontal(method="post",action="/admin/song/new")
+				input(type="hidden",name="song[_id]",value="#{song._id}")
+				.form-group
+					label.col-md-2.control-label(for="inputTitle")歌曲名
+					.col-md-8
+						input#inputTitle.form-control(type="text",name="song[title]",value="#{song.title}")
+				.form-group
+					label.col-md-2.control-label(for="inputSinger")演唱者
+					.col-md-8
+						input#inputSinger.form-control(type="singer",name="song[singer]",value="#{song.singer}")
+				.form-group
+					label.col-md-2.control-label(for="inputLanguage")语言
+					.col-md-8
+						input#inputLanguage.form-control(type="text",name="song[language]",value="#{song.language}")
+				.form-group
+					label.col-md-2.control-label(for="inputAlbum")专辑
+					.col-md-8
+						input#inputAlbum.form-control(type="text",name="song[album]",value="#{song.album}")
+				.form-group
+					label.col-md-2.control-label(for="inputYear")年份
+					.col-md-8
+						input#inputYear.form-control(type="text",name="song[year]",value="#{song.year}")
+				.form-group
+					label.col-md-2.control-label(for="inputGenre")类型
+					.col-md-8
+						input#inputGenre.form-control(type="text",name="song[genre]",value="#{song.genre}")
+				.form-group
+					label.col-md-2.control-label(for="inputPoster")海报
+					.col-md-8
+						input#inputPoster.form-control(type="text",name="song[poster]",value="#{song.poster}")
+				.form-actions
+					button(type='submit',style='float:right' class='btn btn-primary')提交

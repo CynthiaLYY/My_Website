@@ -2,22 +2,21 @@ extends ../layout
 block content
 	.container
 		.row
-			each item in song
-				.col-md-7
-					embed(src="#{song.flash}",allowFullScreen="true",quality="high",width="720",height="600",align="middle",type="application/x-shockwave-flash")
-				.col-md-5
-					dl.dl-horizontal
-						dt 歌曲名
-						dd=song.title
-						dt 演唱者
-						dd=song.singer
-						dt 语言
-						dd=song.language
-						dt 专辑
-						dd=song.album
-						dt 年份
-						dd=song.year
-						dt 类型
-						dd=song.genre
-						dt 海报
-						dd=song.poster
+			.col-md-7
+				embed(src="#{song.flash}",allowFullScreen="true",quality="high",width="720",height="600",align="middle",type="application/x-shockwave-flash")
+			.col-md-5
+				dl.dl-horizontal
+					dt 歌曲名
+					dd=song.title
+					dt 演唱者
+					dd=song.singer
+					dt 语言
+					dd=song.language
+					dt 专辑
+					dd=song.album
+					dt 年份
+					dd=song.year
+					dt 类型
+					dd=song.genre
+					dt 海报
+					dd=song.poster

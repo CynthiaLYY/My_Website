@@ -1,9 +1,43 @@
 extends ../layout
 block content
+	link(rel="stylesheet", href="/css/style.css", media="screen", type="text/css")
 	.container
 		.row
 			.col-md-7
-				embed(src="#{song.flash}",allowFullScreen="true",quality="high",width="720",height="600",align="middle",type="application/x-shockwave-flash")
+				#container
+					label.to-back-label(for="to-back")
+						i.fa.fa-bars.fa-lg
+					input#to-back(type="checkbox")
+					canvas#progress(width="320", height="320") 
+					#player
+						audio#audio(controls="")
+							source(src="#{song.url}", type="audio/mpeg", codecs="#{song.codecs}")
+						img(src="#{song.poster}")
+						label.to-lyrics-label(for="to-lyrics")
+							i.fa.fa-caret-down.fa-lg
+						input#to-lyrics(type="checkbox")
+						.cover
+							.controls
+								button#backward(title="Backward")
+									i.fa.fa-retweet.fa-lg
+								button#backward(title="Backward")
+									i.fa.fa-backward.fa-2x
+								button#play-pause(title="Play", onclick="togglePlayPause()")
+									i.fa.fa-play.fa-3x
+								button#forward(title="Forward")
+									i.fa.fa-forward.fa-2x
+								button#backward(title="Backward")
+									i.fa.fa-random.fa-lg
+								input#volume(name="volume", min="0", max="1", step="0.1", type="range", onchange="setVolume()")
+							.info
+								p.song
+									a(href="#", target="_blank") About
+								p.author
+									a(href="#", target="_blank") Author
+							.lyrics
+							p.scroll scroll down
+					#flip-back
+						ul.playlist
 			.col-md-5
 				dl.dl-horizontal
 					dt 歌曲名
@@ -18,5 +52,4 @@ block content
 					dd=song.year
 					dt 类型
 					dd=song.genre
-					dt 海报
-					dd=song.poster
+	script(src="/js/index.js")

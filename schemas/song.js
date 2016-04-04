@@ -6,7 +6,9 @@ var SongSchema=new mongoose.Schema({
 	album: String,
 	year: Number,
 	genre: String,
-	poster:String,
+	poster: String,
+	url: String,
+	codecs: String,
 	meta: {
 		createAt:{
 			type:Date,

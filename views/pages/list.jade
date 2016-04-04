@@ -8,6 +8,9 @@ block content
 						th 歌曲名
 						th 演唱者
 						th 语言
+						th 地址
+						th 专辑
+						th 类型
 						th 发行时间
 						th 录入时间
 						th 查看
@@ -16,13 +19,17 @@ block content
 				tbody
 					each item in songs
 						tr(class="item-id-#{item._id}")
-							td  #{item.title}
-							td  #{item.singer}
-							td  #{item.language}
-							td  #{item.year}
-							td  #{moment(item.meta.createAt).format('MM/DD/YYYY')}
-							td: a(target="_blank",href="../song/#{item._id}")查看
-							td:  a(target="_blank",href="../admin/update/#{item._id}")修改
+							td #{item.title}
+							td #{item.singer}
+							td #{item.language}
+							td #{item.url}
+							td #{item.album}
+							td #{item.genre}
+							td #{item.year}
+							td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
+							td: a(target="_blank",href="../song/#{item._id}") 查看
+							td: a(target="_blank",href="../admin/update/#{item._id}") 修改
 							td
-								button.btn.btn-danger.del(type="button",data-id="#{item._id}")删除
+								button.btn.btn-danger.del(type="button",data-id="#{item._id}") 删除
+	script(src="/js/admin.js")
 								

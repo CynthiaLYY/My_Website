@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/imusic');
 app.set('views','./views/pages');
 app.set('view engine','jade');
 app.use(require('body-parser').urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.locals.moment = require('moment');
 app.listen(port);
 console.log('my website started on port'+port);
@@ -39,6 +39,21 @@ app.get('/admin/list',function(req,res){
 		});
 	});	
 });
+//删除以后的处理文件
+app.delete('/admin/list',function(req,res){
+	var id=req.query.id;
+
+	if(id){
+		Song.remove({_id:id},function(err,song){
+			if(err){
+				console.log(err);
+			}else{
+				res.json({success:1});
+			}
+		});
+	}
+});
+
 app.get('/admin/song',function(req,res){
 	res.render('admin',{
 		title:'imusic 后台',
@@ -49,7 +64,9 @@ app.get('/admin/song',function(req,res){
 			album:'',
 			year:'',
 			genre:'',
-			poster:''
+			poster:'',
+			url:'',
+			codecs:''
 		}
 	});
 });
@@ -95,7 +112,9 @@ app.post('/admin/song/new',function(req,res){
 			album:songObj.album,
 			year:songObj.year,
 			genre:songObj.genre,
-			poster:songObj.poster
+			poster:songObj.poster,
+			url:songObj.url,
+			codecs:songObj.codecs
 		});
 		_song.save(function(err,song){
 				if(err){

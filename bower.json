@@ -1,0 +1,28 @@
+{
+  "name": ": imusic",
+  "homepage": ":",
+  "authors": [
+    ": Yueyang Li"
+  ],
+  "description": ": a website with nodejs",
+  "main": ":",
+  "moduleType": [],
+  "keywords": [
+    ":",
+    "songs",
+    "listen"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}

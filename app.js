@@ -39,7 +39,7 @@ app.get('/admin/list',function(req,res){
 		});
 	});	
 });
-//删除以后的处理文件
+//lsit delete song
 app.delete('/admin/list',function(req,res){
 	var id=req.query.id;
 

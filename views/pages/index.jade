@@ -6,7 +6,11 @@ block content
 				.col-md-2
 					.thumbnail
 						a(href="/song/#{item._id}")
-							img(src="#{item.poster}",alt="#{item.title}")
+							div(style="height:170px;width:100%;overflow:hidden;")
+								img(src="#{item.poster}",alt="#{item.title}",style="width:100%;")
 						.caption
-							h5 #{item.title}
-							p: a.btn.btn-default(href="/song/#{item._id}",role="button") 试听音乐
+							div(style="height:100px;width:100%;overflow:hidden;")
+								div(style="height:60px;width:100%;overflow:hidden;")
+									h5 #{item.title}
+								div(style="height:40px;width:100%;overflow:hidden;")
+									p: a.btn.btn-default(href="/song/#{item._id}",role="button") 试听音乐

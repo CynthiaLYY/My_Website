@@ -30,7 +30,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CynthiaLYY/My_Website.git"
   },
   "keywords": [
     "music",
@@ -38,9 +37,5 @@
     "listen"
   ],
   "author": "Yueyang Li",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CynthiaLYY/My_Website/issues"
-  },
-  "homepage": "https://github.com/CynthiaLYY/My_Website#readme"
+  "license": "ISC"
 }

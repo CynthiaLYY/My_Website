@@ -8,6 +8,11 @@ var UserSchema = new mongoose.Schema({ //用来描述model的数据结构和类�
 		type: String
 	},
 	password: String,
+	// 0 -> common user    1 -> verified user    2 -> professional user
+	role: {
+		type: Number,
+		default: 0
+	},
 	meta: {
 		createAt: {
 			type: Date,

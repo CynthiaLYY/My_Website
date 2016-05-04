@@ -7,6 +7,7 @@
 /* Basic */
 *, *:before, *:after { box-sizing: border-box; }
 body { margin: 0; min-height: 100%; background: #EEE; font-family: 'Roboto Condensed', sans-serif; font-weight: 300; }
+#bgcolor{ background-color: transparent}
 a { color: #FFF; text-decoration: none; }
 a:hover { color: #26C5CB; }
 p { margin: 0; }

@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var Song = require('../models/song');
+var Comment = require('../models/comment');
 //负责与歌曲页面交互
 
 //songs list
@@ -107,9 +108,15 @@ exports.detail = function(req, res){
 	var id = req.params.id;
 
 	Song.findById(id, function(err, song){
-		res.render('detail', {
-			title: 'imusic',
-			song: song
+		Comment
+			.find({song: id})
+			.populate('from', 'name')
+			.exec(function(err, comments){
+			res.render('detail', {
+				title: 'imusic',
+				song: song,
+				comments: comments
+			});
 		});
 	});
 };

@@ -1,0 +1,11 @@
+extends ../layout
+block content
+	.container
+		.row
+			form.form-horizontal(method="post",action="/admin/category")
+				.form-group
+					label.col-md-2.control-label(for="inputCategory") 歌曲分类
+					.col-md-8
+						input#inputCategory.form-control(type="text",name="category[name]",value=category.name)
+				.form-actions
+					button(type='submit',style='float:right' class='btn btn-default') 提交

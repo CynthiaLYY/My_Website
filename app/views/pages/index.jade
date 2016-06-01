@@ -2,15 +2,20 @@ extends ../layout
 block content
 	.container
 		.row
-			each item in songs
-				.col-md-2
-					.thumbnail
-						a(href="/song/#{item._id}")
-							div(style="height:170px;width:100%;overflow:hidden;")
-								img(src="#{item.poster}",alt="#{item.title}",style="width:100%;")
-						.caption
-							div(style="height:100px;width:100%;overflow:hidden;")
-								div(style="height:60px;width:100%;overflow:hidden;")
-									h5 #{item.title}
-								div(style="height:40px;width:100%;overflow:hidden;")
-									p: a.btn.btn-default(href="/song/#{item._id}",role="button") 试听音乐
+			each cat in categories
+				.panel.panel-primary
+					h3 #{cat.name}
+				.panel-body
+					if cat.songs && cat.songs.length > 0
+						each item in songs
+							.col-md-2
+								.thumbnail
+									a(href="/song/#{item._id}")
+										div(style="height:170px;width:100%;overflow:hidden;")
+											img(src="#{item.poster}",alt="#{item.title}",style="width:100%;")
+									.caption
+										div(style="height:100px;width:100%;overflow:hidden;")
+											div(style="height:60px;width:100%;overflow:hidden;")
+												h5 #{item.title}
+											div(style="height:40px;width:100%;overflow:hidden;")
+												p: a.btn.btn-default(href="/song/#{item._id}",role="button") 试听音乐

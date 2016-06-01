@@ -5,6 +5,10 @@ block content
 			form.form-horizontal(method="post",action="/admin/song/new")
 				input(type="hidden",name="song[_id]",value="#{song._id}")
 				.form-group
+					label.col-md-2.control-label(for="inputCategory") 歌曲分类
+					.col-md-8
+						input#inputCategory.form-control(type="text",name="song[category]",value="#{song.category}")
+				.form-group
 					label.col-md-2.control-label(for="inputTitle") 歌曲名
 					.col-md-8
 						input#inputTitle.form-control(type="text",name="song[title]",value="#{song.title}")

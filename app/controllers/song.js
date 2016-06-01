@@ -111,8 +111,9 @@ exports.detail = function(req, res){
 		Comment
 			.find({song: id})
 			.populate('from', 'name')
+			.populate('reply.from reply.to', 'name')
 			.exec(function(err, comments){
-			res.render('detail', {
+				res.render('detail', {
 				title: 'imusic',
 				song: song,
 				comments: comments

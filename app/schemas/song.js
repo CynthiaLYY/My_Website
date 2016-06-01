@@ -1,5 +1,8 @@
 var mongoose=require('mongoose');
-var SongSchema=new mongoose.Schema({
+var Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
+
+var SongSchema=new Schema({
 	singer: String,
 	title: String,
 	language: String,
@@ -9,6 +12,10 @@ var SongSchema=new mongoose.Schema({
 	poster: String,
 	url: String,
 	codecs: String,
+	category: {
+		type: ObjectId,
+		ref: 'Category'
+	},
 	meta: {
 		createAt:{
 			type:Date,

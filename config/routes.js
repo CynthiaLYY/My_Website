@@ -2,6 +2,7 @@ var Index = require('../app/controllers/index');
 var User = require('../app/controllers/user');
 var Song = require('../app/controllers/song');
 var Comment = require('../app/controllers/comment');
+var Category = require('../app/controllers/category');
 
 module.exports = function(app){
 	//res -> responds ; req -> requests
@@ -77,6 +78,17 @@ module.exports = function(app){
 	 **************************************************************/
 	//save a comment
 	app.post('/user/comment', User.signinRequired, Comment.save);
+	/**************************************************************!
+	 *
+	 **************************************************************/
+
+	 /**************************************************************!
+	 * Category
+	 **************************************************************/
+	//index
+	app.get('/admin/category/new', User.signinRequired, User.adminRequired, Category.new);
+  	app.post('/admin/category', User.signinRequired, User.adminRequired, Category.save);
+  	app.get('/admin/category/list', User.signinRequired, User.adminRequired, Category.list);
 	/**************************************************************!
 	 *
 	 **************************************************************/

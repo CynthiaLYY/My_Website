@@ -2,47 +2,55 @@ extends ../layout
 block content
 	.container
 		.row
-			form.form-horizontal(method="post",action="/admin/song/new")
-				input(type="hidden",name="song[_id]",value="#{song._id}")
+			form.form-horizontal(method="post",action="/admin/song")
+				if song._id
+					input(type="hidden",name="song[_id]",value=song._id)
 				.form-group
 					label.col-md-2.control-label(for="inputCategory") 歌曲分类
 					.col-md-8
-						input#inputCategory.form-control(type="text",name="song[category]",value="#{song.category}")
+						input#inputCategory.form-control(type="text",name="song[categoryName]",value=song.categoryName)
+				.form-group
+					label.col-md-2.control-label 分类选择
+					.col-md-8
+						each cat in categories
+							label.radio-inline
+								input(type="radio", name="song[category]", value=cat._id)
+								| #{cat.name}
 				.form-group
 					label.col-md-2.control-label(for="inputTitle") 歌曲名
 					.col-md-8
-						input#inputTitle.form-control(type="text",name="song[title]",value="#{song.title}")
+						input#inputTitle.form-control(type="text",name="song[title]",value=song.title)
 				.form-group
 					label.col-md-2.control-label(for="inputSinger") 演唱者
 					.col-md-8
-						input#inputSinger.form-control(type="singer",name="song[singer]",value="#{song.singer}")
+						input#inputSinger.form-control(type="singer",name="song[singer]",value=song.singer)
 				.form-group
 					label.col-md-2.control-label(for="inputLanguage") 语言
 					.col-md-8
-						input#inputLanguage.form-control(type="text",name="song[language]",value="#{song.language}")
+						input#inputLanguage.form-control(type="text",name="song[language]",value=song.language)
 				.form-group
 					label.col-md-2.control-label(for="inputAlbum") 专辑
 					.col-md-8
-						input#inputAlbum.form-control(type="text",name="song[album]",value="#{song.album}")
+						input#inputAlbum.form-control(type="text",name="song[album]",value=song.album)
 				.form-group
 					label.col-md-2.control-label(for="inputYear") 年份
 					.col-md-8
-						input#inputYear.form-control(type="text",name="song[year]",value="#{song.year}")
-				.form-group
-					label.col-md-2.control-label(for="inputGenre") 类型
-					.col-md-8
-						input#inputGenre.form-control(type="text",name="song[genre]",value="#{song.genre}")
+						input#inputYear.form-control(type="text",name="song[year]",value=song.year)
+				//- .form-group
+				//- 	label.col-md-2.control-label(for="inputGenre") 类型
+				//- 	.col-md-8
+				//- 		input#inputGenre.form-control(type="text",name="song[genre]",value=song.genre)
 				.form-group
 					label.col-md-2.control-label(for="inputPoster") 海报
 					.col-md-8
-						input#inputPoster.form-control(type="text",name="song[poster]",value="#{song.poster}")
+						input#inputPoster.form-control(type="text",name="song[poster]",value=song.poster)
 				.form-group
 					label.col-md-2.control-label(for="inputURL") 地址
 					.col-md-8
-						input#inputURL.form-control(type="text",name="song[url]",value="#{song.url}")
+						input#inputURL.form-control(type="text",name="song[url]",value=song.url)
 				.form-group
 					label.col-md-2.control-label(for="inputCodecs") 编码
 					.col-md-8
-						input#inputCodecs.form-control(type="text",name="song[codecs]",value="#{song.codecs}")
+						input#inputCodecs.form-control(type="text",name="song[codecs]",value=song.codecs)
 				.form-actions
 					button(type='submit',style='float:right' class='btn btn-default') 提交

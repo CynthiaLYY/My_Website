@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var Category = require('../models/category');
 var Song = require('../models/song');
 var Comment = require('../models/comment');
 //负责与歌曲页面交互
@@ -33,19 +34,23 @@ exports.del = function(req, res){
 
 //new a song
 exports.new = function(req, res){
-	res.render('admin', {
-		title:'imusic 后台',
-		song:{
-			title: '',
-			singer: '',
-			language: '',
-			album: '',
-			year: '',
-			genre: '',
-			poster: '',
-			url: '',
-			codecs: ''
-		}
+	Category.find({}, function(err, categories){
+		res.render('admin', {
+			title:'imusic 后台',
+			categories: categories,
+			song:{
+				/*title: '',
+				singer: '',
+				language: '',
+				album: '',
+				year: '',
+				genre: '',
+				poster: '',
+				url: '',
+				codecs: '',
+				category:''*/
+			}
+		});
 	});
 };
 
@@ -67,7 +72,7 @@ exports.update = function(req, res){
 exports.save = function(req, res){
 	var id = req.body.song._id;
 	var songObj = req.body.song;
-	if(id !== 'undefined'){
+	if(id){
 		Song.findById(id, function(err, song){
 			if(err){
 				console.log(err);
@@ -82,17 +87,7 @@ exports.save = function(req, res){
 			});
 		});
 	}else{
-		_song = new Song({
-			title: songObj.title,
-			singer: songObj.singer,
-			language: songObj.language,
-			album: songObj.album,
-			year: songObj.year,
-			genre: songObj.genre,
-			poster: songObj.poster,
-			url: songObj.url,
-			codecs: songObj.codecs
-		});
+		_song = new Song(songObj);
 		_song.save(function(err, song){
 				if(err){
 					console.log(err);
